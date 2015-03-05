@@ -69,7 +69,7 @@
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="jqnMap/jqnMap.js"></script>
 <script>
-    var map = map = $("#map").jqnMap({
+    var map = $("#map").jqnMap({
         mapFile: "images/map.png",
         mapWidth: 1181,
         mapHeight: 536,
@@ -104,7 +104,6 @@
                 y: 90
             }
         ],
-        popup_html: "popup-demo",
         markerClick: function (marker) {
             console.log("click");
         },
@@ -117,7 +116,7 @@
         markerMouseOut: function (marker) {
             console.log("mouseout");
         }
-    }).data("jqnMap");
+    });
 </script>
 </body>
 </html>

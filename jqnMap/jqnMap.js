@@ -232,6 +232,9 @@
          * @param remap
          */
         loadIcons: function (icons, remap) {
+            //remove all the markers
+            this.removeAllMarkers();
+
             //remapping attributes
             if (typeof remap != "undefined")
                 remapObj(icons, remap);
