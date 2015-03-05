@@ -1,6 +1,8 @@
 # jqnMap
 Simple responsive jQuery map with markers.
 
+**Demo: [CLICK HERE](http://nquocnghia.github.io/jqnMap/)**
+
 ## Setup
 ```
 var $el = $("#map").jqnMap({
