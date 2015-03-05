@@ -195,11 +195,11 @@ map.loadMarkers(markers, remap);
 map.loadMarkers(data, {
     oldKey1: "newKey1", //map only attribute's name
     oldKey2: { //map attribute's name and change its value
-    key: "newKey2",
-    value: function (obj, currentValue) {
-    return newValue;
-    },
-    keep: true //false to delete old attribute
+        key: "newKey2",
+        value: function (obj, currentValue) {
+            return newValue;
+        },
+        keep: true //false to delete old attribute
     }
 });
 </code></pre>
