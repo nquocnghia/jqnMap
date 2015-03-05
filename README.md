@@ -1,7 +1,7 @@
 # jqnMap
 Simple responsive jQuery map with markers.
 
-## Usage
+## Setup
 ```
 var $el = $("#map").jqnMap({
   mapFile: "images/map.png", //image's file name
@@ -38,7 +38,9 @@ var $el = $("#map").jqnMap({
       //this event will be triggered when a marker is no longer hovered
   }
 });
-
+```
+## Functions
+```
 //Get the object instance
 var map = $el.data("jqnMap");
 
