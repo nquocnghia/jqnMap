@@ -1,0 +1,36 @@
+.jqnMap-container {
+    position: relative;
+}
+
+.jqnMap-map {
+    width: 100%;
+}
+
+.jqnMap-marker {
+    position: absolute;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.jqnMap-marker img {
+    width: 100%;
+}
+
+.jqnMap-marker img:hover {
+    position: relative;
+    top: 3px;
+}
+
+.jqnMap-marker:hover {
+    opacity: 0.8;
+}
+
+.jqnMap-popup {
+    display: none;
+    position: absolute;
+    padding: 5px;
+    z-index: 999;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 0px 0px 20px 0px rgba(50, 50, 50, 0.75);
+}

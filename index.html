@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="jqnMap/jqnMap.style.css">
+    <style>
+        .jqnMap-popup {
+            background-color: #ddd;
+            border: solid 10px #3276b1;
+            border-radius: 10px;
+            -moz-border-radius: 10px;
+        }
+
+        .jqnMap-popup .jqnMap-popup-images {
+            float: left;
+        }
+
+        .jqnMap-popup .jqnMap-popup-images img {
+            max-width: 250px;
+            display: block;
+        }
+
+        .jqnMap-popup .jqnMap-popup-content {
+            float: right;
+            color: #3276b1;
+            margin: 0 10px;
+            text-align: justify;
+            width: 250px;
+        }
+
+        .jqnMap-popup .jqnMap-popup-content .label {
+            position: relative;
+            padding: 5px;
+            background: #4cae4c;
+            color: #eee;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .jqnMap-popup .jqnMap-popup-content ul {
+            list-style: square;
+        }
+
+        .jqnMap-popup .jqnMap-popup-content h4 {
+            text-align: center;
+            color: #3276b1;
+            text-transform: uppercase;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<div id="popup-demo" class="jqnMap-popup">
+    <div class="jqnMap-popup-images">
+        <img src="images/camping-on-trannish-island.jpg">
+    </div>
+    <div class="jqnMap-popup-content">
+        <h4 class="title">Title</h4>
+        <ul class="options">
+            <li>Element 1</li>
+            <li>Element 2</li>
+            <li>Element 3</li>
+        </ul>
+        <p class="label">Price</p>
+    </div>
+</div>
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="jqnMap/jqnMap.js"></script>
+<script>
+    var map = map = $("#map").jqnMap({
+        mapFile: "images/map.png",
+        mapWidth: 1181,
+        mapHeight: 536,
+        icons: {
+            0: {
+                id: 0,
+                file: "images/markers/marker.png",
+                width: 100,
+                height: 100
+            }
+        },
+        markers: [
+            {
+                id: 'marker1',
+                iconId: 0,
+                ratio: 0.5,
+                x: 280,
+                y: 290
+            },
+            {
+                id: 'marker2',
+                iconId: 0,
+                ratio: 0.25,
+                x: 650,
+                y: 290
+            },
+            {
+                id: 'marker3',
+                iconId: 0,
+                ratio: 0.5,
+                x: 610,
+                y: 90
+            }
+        ],
+        popup_html: "popup-demo",
+        markerClick: function (marker) {
+            console.log("click");
+        },
+        markerMouseIn: function (marker) {
+            console.log("mousein");
+        },
+        popupShown: function (marker) {
+            return $("#popup-demo").html();
+        },
+        markerMouseOut: function (marker) {
+            console.log("mouseout");
+        }
+    }).data("jqnMap");
+</script>
+</body>
+</html>
