@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=640">
@@ -9,90 +9,169 @@
     <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
 
+    <link rel="stylesheet" href="jqnMap/jqnMap.style.css">
+    <style>
+        #map img {
+            box-shadow: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            border: none;
+        }
+
+        .jqnMap-popup {
+            background-color: #ddd;
+            border: solid 10px #3276b1;
+            border-radius: 10px;
+            -moz-border-radius: 10px;
+        }
+
+        .jqnMap-popup .jqnMap-popup-images {
+            float: left;
+        }
+
+        .jqnMap-popup .jqnMap-popup-images img {
+            max-width: 250px;
+            display: block;
+        }
+
+        .jqnMap-popup .jqnMap-popup-content {
+            float: right;
+            color: #3276b1;
+            margin: 0 10px;
+            text-align: justify;
+            width: 250px;
+        }
+
+        .jqnMap-popup .jqnMap-popup-content .label {
+            position: relative;
+            padding: 5px;
+            background: #4cae4c;
+            color: #eee;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .jqnMap-popup .jqnMap-popup-content ul {
+            list-style: square;
+        }
+
+        .jqnMap-popup .jqnMap-popup-content h4 {
+            text-align: center;
+            color: #3276b1;
+            text-transform: uppercase;
+            margin: 0;
+        }
+    </style>
+
     <script type="text/javascript" src="javascripts/modernizr.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
     <script type="text/javascript">
-      $(document).ready(function () {
-        $('#main_content').headsmart()
-      })
+        $(document).ready(function () {
+            $('#main_content').headsmart()
+        })
     </script>
     <title>Jqnmap by nquocnghia</title>
-  </head>
+</head>
 
-  <body>
-    <a id="forkme_banner" href="https://github.com/nquocnghia/jqnMap">View on GitHub</a>
-    <div class="shell">
+<body>
+<a id="forkme_banner" href="https://github.com/nquocnghia/jqnMap">View on GitHub</a>
 
-      <header>
+<div class="shell">
+
+    <header>
         <span class="ribbon-outer">
           <span class="ribbon-inner">
             <h1>Jqnmap</h1>
-            <h2>Simple jQuery map with markers</h2>
+            <h2>Simple responsive jQuery map with markers</h2>
           </span>
           <span class="left-tail"></span>
           <span class="right-tail"></span>
         </span>
-      </header>
+    </header>
 
-      <section id="downloads">
+    <section id="downloads">
         <span class="inner">
-          <a href="https://github.com/nquocnghia/jqnMap/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/nquocnghia/jqnMap/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+          <a href="https://github.com/nquocnghia/jqnMap/zipball/master" class="zip"><em>download</em> .ZIP</a><a
+                href="https://github.com/nquocnghia/jqnMap/tarball/master" class="tgz"><em>download</em> .TGZ</a>
         </span>
-      </section>
+    </section>
 
 
-      <span class="banner-fix"></span>
+    <span class="banner-fix"></span>
 
 
-      <section id="main_content">
+    <section id="main_content">
         <h1>
-<a id="jqnmap" class="anchor" href="#jqnmap" aria-hidden="true"><span class="octicon octicon-link"></span></a>jqnMap</h1>
+            <a id="jqnmap" class="anchor" href="#jqnmap" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>jqnMap</h1>
 
-<p>Simple responsive jQuery map with markers.</p>
+        <p>Simple responsive jQuery map with markers.</p>
 
-<h2>
-<a id="setup" class="anchor" href="#setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup</h2>
+        <h2>
+            <a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo
+        </h2>
+
+        <div id="map"></div>
+        <div id="popup-demo" class="jqnMap-popup">
+            <div class="jqnMap-popup-images">
+                <img src="images/camping-on-trannish-island.jpg">
+            </div>
+            <div class="jqnMap-popup-content">
+                <h4 class="title">Title</h4>
+                <ul class="options">
+                    <li>Element 1</li>
+                    <li>Element 2</li>
+                    <li>Element 3</li>
+                </ul>
+                <p class="label">Price</p>
+            </div>
+        </div>
+
+        <h2>
+            <a id="setup" class="anchor" href="#setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup
+        </h2>
 
 <pre><code>var $el = $("#map").jqnMap({
-  mapFile: "images/map.png", //image's file name
-  mapWidth: 1181, //image's width
-  mapHeight: 536, //image's height
-  icons: { //icons
-      0: {
-          id: 0, //icon's id
-          file: "images/markers/marker.png", //icon's file name
-          width: 100, //icon's width
-          height: 100 //icon's height
-      }
-  },
-  markers: [ //markers
-      {
-          id: 'marker1', //marker's id
-          iconId: 0, //icon's id
-          ratio: 0.5, //icon scale ratio
-          x: 280, //marker's coordinate (in map)
-          y: 290 //marker's coordinate (in map)
-      }
-  ],
-  markerClick: function (marker) {
-      //this event will be triggered when a marker is clicked
-  },
-  markerMouseIn: function (marker) {
-      //this event will be triggered when a marker is hovered
-  },
-  popupShown: function (marker) {
-      //use this to manipulate popup's content
-      //e.g. return $("#popup-demo").html();
-  },
-  markerMouseOut: function (marker) {
-      //this event will be triggered when a marker is no longer hovered
-  }
+    mapFile: "images/map.png", //image's file name
+    mapWidth: 1181, //image's width
+    mapHeight: 536, //image's height
+    icons: { //icons
+        0: {
+            id: 0, //icon's id
+            file: "images/markers/marker.png", //icon's file name
+            width: 100, //icon's width
+            height: 100 //icon's height
+        }
+    },
+    markers: [ //markers
+        {
+            id: 'marker1', //marker's id
+            iconId: 0, //icon's id
+            ratio: 0.5, //icon scale ratio
+            x: 280, //marker's coordinate (in map)
+            y: 290 //marker's coordinate (in map)
+        }
+    ],
+    markerClick: function (marker) {
+        //this event will be triggered when a marker is clicked
+    },
+    markerMouseIn: function (marker) {
+        //this event will be triggered when a marker is hovered
+    },
+    popupShown: function (marker) {
+        //use this to manipulate popup's content
+        //e.g. return $("#popup-demo").html();
+    },
+    markerMouseOut: function (marker) {
+        //this event will be triggered when a marker is no longer hovered
+    }
 });
 </code></pre>
 
-<h2>
-<a id="functions" class="anchor" href="#functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Functions</h2>
+        <h2>
+            <a id="functions" class="anchor" href="#functions" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Functions</h2>
 
 <pre><code>//Get the object instance
 var map = $el.data("jqnMap");
@@ -116,40 +195,95 @@ map.loadMarkers(markers, remap);
 map.loadMarkers(data, {
     oldKey1: "newKey1", //map only attribute's name
     oldKey2: { //map attribute's name and change its value
-        key: "newKey2",
-        value: function (obj, currentValue) {
-            return newValue;
-        },
-        keep: true //false to delete old attribute
+    key: "newKey2",
+    value: function (obj, currentValue) {
+    return newValue;
+    },
+    keep: true //false to delete old attribute
     }
 });
 </code></pre>
-      </section>
+    </section>
 
-      <footer>
+    <footer>
         <span class="ribbon-outer">
           <span class="ribbon-inner">
-            <p>this project by <a href="https://github.com/nquocnghia">nquocnghia</a> can be found on <a href="https://github.com/nquocnghia/jqnMap">GitHub</a></p>
+            <p>this project by <a href="https://github.com/nquocnghia">nquocnghia</a> can be found on <a
+                    href="https://github.com/nquocnghia/jqnMap">GitHub</a></p>
           </span>
           <span class="left-tail"></span>
           <span class="right-tail"></span>
         </span>
+
         <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
         <span class="octocat"></span>
-      </footer>
+    </footer>
 
-    </div>
+</div>
 
-              <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-56115370-2");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
+<script src="jqnMap/jqnMap.js"></script>
+<script>
+    var map = $("#map").jqnMap({
+        mapFile: "images/map.png",
+        mapWidth: 1181,
+        mapHeight: 536,
+        icons: {
+            0: {
+                id: 0,
+                file: "images/markers/marker.png",
+                width: 100,
+                height: 100
+            }
+        },
+        markers: [
+            {
+                id: 'marker1',
+                iconId: 0,
+                ratio: 0.5,
+                x: 280,
+                y: 290
+            },
+            {
+                id: 'marker2',
+                iconId: 0,
+                ratio: 0.25,
+                x: 660,
+                y: 280
+            },
+            {
+                id: 'marker3',
+                iconId: 0,
+                ratio: 0.5,
+                x: 610,
+                y: 90
+            }
+        ],
+        markerClick: function (marker) {
+            console.log("click");
+        },
+        markerMouseIn: function (marker) {
+            console.log("mousein");
+        },
+        popupShown: function (marker) {
+            return $("#popup-demo").html();
+        },
+        markerMouseOut: function (marker) {
+            console.log("mouseout");
+        }
+    });
+</script>
 
-  </body>
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-56115370-2");
+        pageTracker._trackPageview();
+    } catch (err) {
+    }
+</script>
+
+</body>
 </html>
